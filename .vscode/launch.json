@@ -1,0 +1,72 @@
+{
+    "configurations": [
+        {
+            "name":         "gdb (C/C++)",
+            "comment":      "C/C++ extension",
+            "extension":    "ms-vscode.cpptools",
+            "documentation":"code.visualstudio.com/docs/cpp/launch-json-reference",
+            "type":         "cppdbg",
+            "request":      "launch",
+            "MIMode":       "gdb",
+            "preLaunchTask":"cmake-tasksBuildCommand",
+            "setupCommands": [ { "description": "Enable pretty-printing for gdb", "text": "-enable-pretty-printing", "ignoreFailures": true } ],
+
+            "program":      "${workspaceFolder}/build/main",
+            "cwd":          "${workspaceFolder}/build",
+            "args":         []
+        },
+        {
+            "name":         "gdb (Native Debug)",
+            "comment":      "Native Debug extension. (Available in VScodium)",
+            "extension":    "webfreak.debug",
+            "documentation":"open-vsx.org/extension/webfreak/debug",
+            "type":         "gdb",
+            "request":      "launch",
+            "preLaunchTask":"cmake-tasksBuildCommand",
+            "valuesFormatting": "parseText",
+
+            "target":       "${workspaceFolder}/build/main",
+            "cwd":          "${workspaceFolder}",
+            "args":         []
+        },
+        {
+            "name":         "lldb (Native Debug)",
+            "comment":      "Native Debug extension. (Available in VScodium)",
+            "extension":    "webfreak.debug",
+            "documentation":"open-vsx.org/extension/webfreak/debug",
+            "type":         "lldb-mi",
+            "request":      "launch",
+            "preLaunchTask":"cmake-tasksBuildCommand",
+            "valuesFormatting": "parseText",
+
+            "target":       "${workspaceFolder}/build/main",
+            "cwd":          "${workspaceFolder}",
+            "args":         []
+        },
+        {
+            "name":         "lldb (CodeLLDB)",
+            "comment":      "CodeLLDB extension. Warning: Debugging starts even in case of a build failure. (Available in VScodium)",
+            "extension":    "vadimcn.vscode-lldb",
+            "documentation":"github.com/vadimcn/codelldb/blob/v1.10.0/MANUAL.md",
+            "type":         "lldb",
+            "request":      "launch",
+            "initCommands": [ "shell cmake --build ${workspaceFolder}/build" ],
+
+            "program":      "${workspaceFolder}/build/main",
+            "cwd":          "${workspaceFolder}/build",
+            "args":         []
+        },
+        {
+            "name":         "Python",
+            "comment":      "Python extension. (Available in VScodium)",
+            "extension":    "ms-python.python",
+            "documentation":"code.visualstudio.com/docs/python/debugging",
+            "type":         "python",
+            "request":      "launch",
+
+            "program":      "${workspaceFolder}/main.py",
+            "cwd":          "${workspaceFolder}",
+            "args":         []
+        }
+    ]
+}

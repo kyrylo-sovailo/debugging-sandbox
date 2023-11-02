@@ -1,0 +1,12 @@
+{
+    "tasks": [
+        {
+            "documentation": "code.visualstudio.com/docs/editor/tasks",
+            "label": "cmake-tasksBuildCommand",
+            "type": "shell",
+            "command": "/bin/sh",
+            "args": [ "-c", "cmake --build ." ],
+            "options": { "cwd": "${workspaceFolder}/build" }
+       }
+    ]
+}

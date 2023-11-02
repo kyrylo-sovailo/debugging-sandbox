@@ -16,6 +16,7 @@ Supported debuggers:
    - extension ID: `webfreak.debug`
    - documentation: [open-vsx.org](https://open-vsx.org/extension/webfreak/debug)
    - Available in VScodium: yes
+   - **Warning**: Not tested
  - lldb
    - extension: `CodeLLDB`
    - extension ID: `vadimcn.vscode-lldb`

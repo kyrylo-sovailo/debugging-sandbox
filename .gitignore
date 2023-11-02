@@ -19,16 +19,10 @@
 ehthumbs.db
 Thumbs.db
 
-# Visual Studio Code #
-######################
-.vscode/
-
 # clangd #
 ##########
 .cache/
 
 # CMake #
 #########
-/*.cmake
 build/
-documentation/
