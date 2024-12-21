@@ -8,7 +8,7 @@
             "request":          "launch",
             "preLaunchTask":    "debugging-sandbox-make",
 
-            "program":          "${workspaceFolder}/build/main_gcc",
+            "program":          "${workspaceFolder}/build/main_clang",
             "cwd":              "${workspaceFolder}/build",
             "args":             [ "TEST" ],
             "environment":      [ { "name": "DEBUG_SANDBOX_TEST", "value": "TEST" } ]
@@ -21,7 +21,7 @@
             "request":          "launch",
             "preLaunchTask":    "debugging-sandbox-make",
 
-            "program":          "${workspaceFolder}/build/main_gcc",
+            "program":          "${workspaceFolder}/build/main_clang",
             "cwd":              "${workspaceFolder}/build",
             "args":             [ "TEST" ],
             "environment":      [ { "name": "DEBUG_SANDBOX_TEST", "value": "TEST" } ]
@@ -31,12 +31,12 @@
             "name":             "LLDB Debug (LLDB DAP)",
             "type":             "lldb-dap",
             "request":          "launch",
-            "initCommands":     [ "shell cmake --build ${workspaceFolder}/build" ],
+            "initCommands":     [ "shell make -C ${workspaceFolder} all" ],
             
-            "program":          "${workspaceFolder}/build/main_gcc",
+            "program":          "${workspaceFolder}/build/main_clang",
             "cwd":              "${workspaceFolder}/build",
-            "args":             [],
-            "env":              {}
+            "args":             [ "TEST" ],
+            "env":              { "DEBUG_SANDBOX_TEST" : "TEST" }
         },
         {
             "extension_name":   "Native Debug",
@@ -67,7 +67,7 @@
             "request":          "launch",
             "initCommands":     [ "shell make -C ${workspaceFolder} all" ],
 
-            "program":          "${workspaceFolder}/build/main_gcc",
+            "program":          "${workspaceFolder}/build/main_clang",
             "cwd":              "${workspaceFolder}/build",
             "args":             [ "TEST" ],
             "env":              { "DEBUG_SANDBOX_TEST" : "TEST" }

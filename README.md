@@ -7,10 +7,10 @@ Supported extensions:
    - documentation: [code.visualstudio.com](https://code.visualstudio.com/docs/cpp/launch-json-reference)
    - Verified by VSCode: yes
    - Availability in VScodium: no
-   - Linux/gcc/gdb status: :white_check_mark: yes
-   - Linux/clang/gdb status: :white_check_mark: yes
-   - Linux/gcc/lldb status: :warning: not tested, requires `lldb-mi`, which is largely abandoned
-   - Linux/clang/lldb status: :warning: not tested, requires `lldb-mi`, which is largely abandoned
+   - Linux/gcc/gdb status: :warning: yes, no Eigen printers
+   - Linux/clang/gdb status: :warning: yes, no Eigen printers
+   - Linux/gcc/lldb status: :warning: yes, no Eigen printers, requires largely abandoned `lldb-mi`
+   - Linux/clang/lldb status: :warning: yes, no Eigen printers, requires largely abandoned `lldb-mi`
    - Windows/gcc/gdb status: :question: not tested
    - Windows/clang/gdb status: :question: not tested
    - Windows/gcc/lldb status: :question: not tested
@@ -23,22 +23,23 @@ Supported extensions:
    - Availability in VScodium: no
    - Linux/gcc/gdb status: :black_square_button: N/A
    - Linux/clang/gdb status: :black_square_button: N/A
-   - Linux/gcc/lldb status: :question: not tested
-   - Linux/clang/lldb status: :question: not tested
+   - Linux/gcc/lldb status: :warning: yes, must set executable path setting to `/usr/bin/lldb-dap`
+   - Linux/clang/lldb status: :warning: yes, must set executable path settting to `/usr/bin/lldb-dap`
    - Windows/gcc/gdb status: :black_square_button: N/A
    - Windows/clang/gdb status: :black_square_button: N/A
    - Windows/gcc/lldb status: :question: not tested
    - Windows/clang/lldb status: :question: not tested
+   - **Info**: Perfect Eigen printers
  3. Native Debug
    - extension name: Native Debug
    - extension ID: `webfreak.debug`
    - documentation: [open-vsx.org](https://open-vsx.org/extension/webfreak/debug)
    - Verified by VSCode: no
    - Availability in VScodium: yes
-   - Linux/gcc/gdb status: :white_check_mark: yes
-   - Linux/clang/gdb status: :white_check_mark: yes
-   - Linux/gcc/lldb status: :warning: not tested, requires `lldb-mi`, which is largely abandoned
-   - Linux/clang/lldb status: :warning: not tested, requires `lldb-mi`, which is largely abandoned
+   - Linux/gcc/gdb status: :white_check_mark: yes, Eigen printers not very pretty
+   - Linux/clang/gdb status: :white_check_mark: yes, Eigen printers not very pretty
+   - Linux/gcc/lldb status: :warning: yes, no Eigen printers, requires largely abandoned `lldb-mi`
+   - Linux/clang/lldb status: :warning: yes, no Eigen printers, requires largely abandoned `lldb-mi`
    - Windows/gcc/gdb status: :question: not tested
    - Windows/clang/gdb status: :question: not tested
    - Windows/gcc/lldb status: :question: not tested
@@ -52,10 +53,12 @@ Supported extensions:
    - Availability in VScodium: yes
    - Linux/gcc/gdb status: :black_square_button: N/A
    - Linux/clang/gdb status: :black_square_button: N/A
-   - Linux/gcc/lldb status: :white_check_mark: yes
-   - Linux/clang/lldb status: :white_check_mark: yes
+   - Linux/gcc/lldb status: :warning: yes, no Eigen printers
+   - Linux/clang/lldb status: :warning: yes, no Eigen printers
    - Windows/gcc/gdb status: :black_square_button: N/A
    - Windows/clang/gdb status: :black_square_button: N/A
    - Windows/gcc/lldb status: :question: not tested
    - Windows/clang/lldb status: :question: not tested
    - **Warning**: Debugging starts even in case of a build failure
+
+Conclusion: I recommend Native Debug by WebFreak
