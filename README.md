@@ -30,6 +30,7 @@ Supported extensions:
    - Windows/gcc/lldb status: :question: not tested
    - Windows/clang/lldb status: :question: not tested
    - **Info**: Perfect Eigen printers
+   - **Warning**: Debugging starts even in case of a build failure
  3. Native Debug
    - extension name: Native Debug
    - extension ID: `webfreak.debug`
