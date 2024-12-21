@@ -1,72 +1,76 @@
 {
     "configurations": [
         {
-            "name":         "gdb (C/C++)",
-            "comment":      "C/C++ extension",
-            "extension":    "ms-vscode.cpptools",
-            "documentation":"code.visualstudio.com/docs/cpp/launch-json-reference",
-            "type":         "cppdbg",
-            "request":      "launch",
-            "MIMode":       "gdb",
-            "preLaunchTask":"cmake-tasksBuildCommand",
-            "setupCommands": [ { "description": "Enable pretty-printing for gdb", "text": "-enable-pretty-printing", "ignoreFailures": true } ],
+            "extension_name":   "C/C++",
+            "name":             "GDB Debug (C/C++)",
+            "type":             "cppdbg",
+            "MIMode":           "gdb",
+            "request":          "launch",
+            "preLaunchTask":    "debugging-sandbox-make",
 
-            "program":      "${workspaceFolder}/build/main",
-            "cwd":          "${workspaceFolder}/build",
-            "args":         []
+            "program":          "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}/build",
+            "args":             [ "TEST" ],
+            "environment":      [ { "name": "DEBUG_SANDBOX_TEST", "value": "TEST" } ]
         },
         {
-            "name":         "gdb (Native Debug)",
-            "comment":      "Native Debug extension. (Available in VScodium)",
-            "extension":    "webfreak.debug",
-            "documentation":"open-vsx.org/extension/webfreak/debug",
-            "type":         "gdb",
-            "request":      "launch",
-            "preLaunchTask":"cmake-tasksBuildCommand",
-            "valuesFormatting": "parseText",
+            "extension_name":   "C/C++",
+            "name":             "LLDB Debug (C/C++)",
+            "type":             "cppdbg",
+            "MIMode":           "lldb",
+            "request":          "launch",
+            "preLaunchTask":    "debugging-sandbox-make",
 
-            "target":       "${workspaceFolder}/build/main",
-            "cwd":          "${workspaceFolder}",
-            "args":         []
+            "program":          "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}/build",
+            "args":             [ "TEST" ],
+            "environment":      [ { "name": "DEBUG_SANDBOX_TEST", "value": "TEST" } ]
         },
         {
-            "name":         "lldb (Native Debug)",
-            "comment":      "Native Debug extension. (Available in VScodium)",
-            "extension":    "webfreak.debug",
-            "documentation":"open-vsx.org/extension/webfreak/debug",
-            "type":         "lldb-mi",
-            "request":      "launch",
-            "preLaunchTask":"cmake-tasksBuildCommand",
-            "valuesFormatting": "parseText",
-
-            "target":       "${workspaceFolder}/build/main",
-            "cwd":          "${workspaceFolder}",
-            "args":         []
+            "extension_name":   "LLDB DAP",
+            "name":             "LLDB Debug (LLDB DAP)",
+            "type":             "lldb-dap",
+            "request":          "launch",
+            "initCommands":     [ "shell cmake --build ${workspaceFolder}/build" ],
+            
+            "program":          "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}/build",
+            "args":             [],
+            "env":              {}
         },
         {
-            "name":         "lldb (CodeLLDB)",
-            "comment":      "CodeLLDB extension. Warning: Debugging starts even in case of a build failure. (Available in VScodium)",
-            "extension":    "vadimcn.vscode-lldb",
-            "documentation":"github.com/vadimcn/codelldb/blob/v1.10.0/MANUAL.md",
-            "type":         "lldb",
-            "request":      "launch",
-            "initCommands": [ "shell cmake --build ${workspaceFolder}/build" ],
+            "extension_name":   "Native Debug",
+            "name":             "GDB Debug (Native Debug)",
+            "type":             "gdb",
+            "request":          "launch",
+            "preLaunchTask":    "debugging-sandbox-make",
 
-            "program":      "${workspaceFolder}/build/main",
-            "cwd":          "${workspaceFolder}/build",
-            "args":         []
+            "target":           "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}",
+            "debugger_args" :   [ "-iex", "set env DEBUG_SANDBOX_TEST=TEST", "--args", "${workspaceFolder}/build/main_gcc", "TEST" ]
         },
         {
-            "name":         "Python",
-            "comment":      "Python extension. (Available in VScodium)",
-            "extension":    "ms-python.python",
-            "documentation":"code.visualstudio.com/docs/python/debugging",
-            "type":         "python",
-            "request":      "launch",
+            "extension_name":   "Native Debug",
+            "name":             "LLDB Debug (Native Debug)",
+            "type":             "lldb-mi",
+            "request":          "launch",
+            "preLaunchTask":    "debugging-sandbox-make",
 
-            "program":      "${workspaceFolder}/main.py",
-            "cwd":          "${workspaceFolder}",
-            "args":         []
+            "target":           "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}",
+            "debugger_args" :   [ "-iex", "set env DEBUG_SANDBOX_TEST=TEST", "--args", "${workspaceFolder}/build/main_gcc", "TEST" ]
+        },
+        {
+            "extension_name":   "CodeLLDB",
+            "name":             "LLDB Debug (CodeLLDB)",
+            "type":             "lldb",
+            "request":          "launch",
+            "initCommands":     [ "shell make -C ${workspaceFolder} all" ],
+
+            "program":          "${workspaceFolder}/build/main_gcc",
+            "cwd":              "${workspaceFolder}/build",
+            "args":             [ "TEST" ],
+            "env":              { "DEBUG_SANDBOX_TEST" : "TEST" }
         }
     ]
 }

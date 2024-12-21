@@ -2,11 +2,11 @@
     "tasks": [
         {
             "documentation": "code.visualstudio.com/docs/editor/tasks",
-            "label": "cmake-tasksBuildCommand",
+            "label": "debugging-sandbox-make",
             "type": "shell",
             "command": "/bin/sh",
-            "args": [ "-c", "cmake --build ." ],
-            "options": { "cwd": "${workspaceFolder}/build" }
+            "args": [ "-c", "make all" ],
+            "options": { "cwd": "${workspaceFolder}" }
        }
     ]
 }
